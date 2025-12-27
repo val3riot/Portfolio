@@ -1,0 +1,64 @@
+.article {
+    max-width: 42rem; 
+    margin: 0 auto;
+    padding: 5rem 1.5rem; 
+}
+
+.header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+}
+
+
+.markdownContent h3 {
+    font-size: 1.25rem;          
+    font-weight: 600;
+    margin: 3rem 0 1.25rem 0;    
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border); 
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+}
+
+.markdownContent h4 {
+    font-size: 1rem;             
+    font-weight: 500;
+    margin: 2rem 0 0.75rem 0;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px dashed var(--border); 
+    color: var(--muted-foreground);
+    text-transform: uppercase;    
+    letter-spacing: 0.05em;
+}
+
+.markdownContent p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+}
+
+.markdownContent ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.markdownContent li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+.markdownContent li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--border);
+    font-size: 0.8rem;
+}
+
+.markdownContent strong {
+    color: var(--foreground);
+    font-weight: 500;
+}
