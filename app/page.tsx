@@ -4,34 +4,7 @@ import {BRAND, SOCIAL_LINKS } from "@/constants/globals";
 import styles from './Home.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import FusionCollection from "fusionable/FusionCollection";
-function getProgetti() {
-    const collection = new FusionCollection()
-        .loadFromDir('content/progetti')
-        .orderBy('date', 'desc');
-    console.log(collection);
-    return collection.getItemsArray();
-}
-function getLavori() {
-    const collection = new FusionCollection()
-        .loadFromDir('content/lavoro')
-        .orderBy('date', 'desc');
-    console.log(collection);
-    return collection.getItemsArray();
-}
-function getSkills() {
-    const collection = new FusionCollection()
-        .loadFromDir('content/about')
-        .orderBy('date', 'desc');
-    console.log(collection);
-    return collection.getItemsArray();
-}
-function getFormazione() {
-    const collection = new FusionCollection()
-        .loadFromDir('content/formazione')
-        .orderBy('date', 'desc');
-    return collection.getItemsArray();
-}
+import { getLavori, getProgetti, getSkills, getFormazione } from "@/lib/data";
 export default function Home() {
     const progetti = getProgetti();
     const lavori = getLavori();

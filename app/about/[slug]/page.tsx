@@ -1,6 +1,14 @@
 import { getContentData } from "@/lib/content";
 import ContentLayout from "@/components/layout/ContentLayout";
+import { getSkills } from "@/lib/data"; 
 
+export async function generateStaticParams() {
+    const skills = getSkills();
+    
+    return skills.map((skill) => ({
+        slug: skill.fields.slug,
+    }));
+}
 export default async function AboutPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const data = await getContentData('about', slug);
