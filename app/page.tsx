@@ -19,13 +19,6 @@ function getLavori() {
     console.log(collection);
     return collection.getItemsArray();
 }
-function getPosts() {
-    const collection = new FusionCollection()
-        .loadFromDir('content/blog')
-        .orderBy('date', 'desc');
-    console.log(collection);
-    return collection.getItemsArray();
-}
 function getSkills() {
     const collection = new FusionCollection()
         .loadFromDir('content/about')
@@ -40,7 +33,6 @@ function getFormazione() {
     return collection.getItemsArray();
 }
 export default function Home() {
-    const posts = getPosts();
     const progetti = getProgetti();
     const lavori = getLavori();
     const skills = getSkills();
