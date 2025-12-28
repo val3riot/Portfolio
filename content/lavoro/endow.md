@@ -4,7 +4,7 @@ date: "2025-12-27"
 highlight: true
 azienda: 'Endow'
 ruolo: 'Backend Developer'
-periodo: 'Set 2021 - set 2024'
+periodo: '2021-2024'
 descrizione: 'Sviluppo di interfacce scalabili e gestione del backend.'
 competenze: ['Spring Boot', 'Spring Framework', 'Angular', 'Oracle SQL']
 linkAzienda: 'https://futurae.com'
