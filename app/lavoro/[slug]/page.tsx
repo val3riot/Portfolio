@@ -13,7 +13,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
     const { slug } = await params;
     const data = await getContentData('lavoro', slug);
 
-    if (!data) return <div>404 - Esperienza non trovata</div>;
+    if (!data) return <div>404 - Pagina non trovata</div>;
 
     return (
         <ContentLayout 

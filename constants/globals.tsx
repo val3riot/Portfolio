@@ -7,7 +7,7 @@ export const BRAND = {
 };
 export const NAV_LINKS = [
     {name: "Progetti", link: "/progetti"},
-    {name: "Experience", link: "/lavoro"},
+    {name: "Esperienze", link: "/lavoro"},
     {name: "Skills", link: "/about/skills"},
 ] as const;
 

@@ -13,7 +13,7 @@ export default async function ProgettiPage({ params }: { params: Promise<{ slug:
     const { slug } = await params;
     const data = await getContentData('progetti', slug);
 
-    if (!data) return <div>404 - Progetto non trovato</div>;
+    if (!data) return <div>404 - Pagina non trovata</div>;
 
     return (
         <ContentLayout 

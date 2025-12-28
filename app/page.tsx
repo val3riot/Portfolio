@@ -1,16 +1,16 @@
 
 import Link from "next/link";
-import {BRAND, SOCIAL_LINKS } from "@/constants/globals";
+import { BRAND, SOCIAL_LINKS } from "@/constants/globals";
 import styles from './Home.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getLavori, getProgetti, getSkills, getFormazione } from "@/lib/data";
+import Footer from "@/components/layout/footer";
 export default function Home() {
     const progetti = getProgetti();
     const lavori = getLavori();
     const skills = getSkills();
     const formazione = getFormazione();
-    console.log('lavori: ', lavori);
     return (
         <main className={styles.container}>
             <header>
@@ -106,21 +106,23 @@ export default function Home() {
                 <div className="flex flex-col gap-8">
                     {formazione.map((studio) => (
                         <div key={studio.fields.slug} className="group">
-                                <div className="flex justify-between items-baseline">
-                                    <h3 className="font-medium">
-                                        {studio.fields.istituto}
-                                    </h3>
-                                    <span className="text-sm text-muted tabular-nums">
-                                        {studio.fields.periodo}
-                                    </span>
-                                </div>
-                                <p className="text-sm text-muted mt-1">
-                                    {studio.fields.title}
-                                </p>
+                            <div className="flex justify-between items-baseline">
+                                <h3 className="font-medium">
+                                    {studio.fields.istituto}
+                                </h3>
+                                <span className="text-sm text-muted tabular-nums">
+                                    {studio.fields.periodo}
+                                </span>
+                            </div>
+                            <p className="text-sm text-muted mt-1">
+                                {studio.fields.title}
+                            </p>
                         </div>
                     ))}
                 </div>
             </section>
+
+            <Footer />
         </main>
     );
 }

@@ -10,7 +10,12 @@
     padding-bottom: 2rem;
 }
 
-
+.markdownContent h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
 .markdownContent h3 {
     font-size: 1.25rem;          
     font-weight: 600;

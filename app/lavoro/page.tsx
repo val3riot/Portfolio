@@ -1,19 +1,9 @@
 import Link from "next/link";
 import styles from '../Home.module.css'
 import { getLavori } from "@/lib/data";
-const expCols = [
-    { header: "Ruolo", key: "role" },
-    { header: "Azienda", key: "company" },
-    { header: "Periodo", key: "date" }
-];
-
-const expData = [
-    { role: "Frontend Dev", company: "Tech Srl", date: "2021 - Presente" },
-    { role: "Junior Web Dev", company: "Web Agency", date: "2019 - 2021" }
-];
 
 export default function LavoroPage() {
-    var lavori = getLavori();
+    const lavori = getLavori();
     return (
         <main className={styles.container}>
             <section className={styles.section} style={{ borderTop: 'none' }}>

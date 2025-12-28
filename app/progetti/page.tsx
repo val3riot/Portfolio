@@ -1,13 +1,9 @@
 import { getProgetti } from "@/lib/data";
 import Link from "next/link";
 import styles from '../Home.module.css'
-const projectCols = [
-    { header: "Nome", key: "title" },
-    { header: "Competenze", key: "competenze" },
-    { header: "Anno", key: "periodo" }
-];
+
 export default function ProgettiPage() {
-    var progetti = getProgetti();
+    const progetti = getProgetti();
 
     return (
         <main className={styles.container}>
