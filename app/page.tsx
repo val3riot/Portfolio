@@ -32,10 +32,11 @@ export default function Home() {
                 <div className="flex flex-col gap-8">
                     {lavori.map((job) => (
                         <div key={job.fields.slug} className="group">
-                            <Link href={`/lavoro/${job.fields.slug}`} className="block">
-                                <div className="flex justify-between items-baseline">
-                                    <h3 className="font-medium group-hover:underline underline-offset-4">
+                            <Link href={`/lavoro/${job.fields.slug}`} className="block group">
+                                <div className="flex justify-between items-baseline ">
+                                    <h3 className={`${styles["is-clickable"]} font-medium`}>
                                         {job.fields.ruolo} @ {job.fields.azienda}
+                                        <span className={styles.arrowIcon}> &gt;</span>
                                     </h3>
                                     <span className="text-sm text-muted tabular-nums">{job.fields.periodo}</span>
                                 </div>
@@ -59,8 +60,9 @@ export default function Home() {
                         <div key={progetto.fields.slug} className="group">
                             <Link href={`/progetti/${progetto.fields.slug}`} className="block">
                                 <div className="flex justify-between items-baseline">
-                                    <h3 className="font-medium group-hover:underline underline-offset-4">
+                                    <h3 className={`${styles["is-clickable"]} font-medium`}>
                                         {progetto.fields.title}
+                                        <span className={styles.arrowIcon}> &gt;</span>
                                     </h3>
                                     <span className="text-sm text-muted tabular-nums">{progetto.fields.periodo}</span>
                                 </div>
@@ -80,7 +82,7 @@ export default function Home() {
             <section className={`${styles.section} group`}>
                 <h2 className={styles.sectionTitle}>
                     <Link href={`/about/skills`} className="block">
-                        <span className="group-hover:underline underline-offset-4">Technical Skills</span>
+                        <span className={`${styles["is-clickable"]} font-medium`}>Technical Skills <span className={styles.arrowIcon}> &gt;</span> </span>
                     </Link>
                 </h2>
                 {skills[0] && (

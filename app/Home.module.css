@@ -1,55 +1,93 @@
 .container {
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 20px 24px;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 20px 24px;
 }
 
 .section {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border); 
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
 }
 
 .sectionTitle {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--muted); 
-    margin-bottom: 30px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 30px;
 }
 
 .experienceItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 12px 0;
-    border-bottom: 0.5px solid var(--border); 
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--border);
 }
 
 .experienceItem:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-
 .socialWrapper {
-    display: flex;
-    gap: 1.5rem; 
-    margin-top: 1.25rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .socialIcon {
-    color: var(--foreground); 
-    font-size: 1.2rem;       
-    transition: opacity 0.2s ease;
+  color: var(--foreground);
+  font-size: 1.2rem;
+  transition: opacity 0.2s ease;
 }
 
 .socialIcon:hover {
-    opacity: 0.6; 
+  opacity: 0.6;
 }
 
 .section {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.arrowIcon {
+  margin-left: 6px;
+  opacity: 0.4; 
+  font-weight: 300;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.is-clickable:active .arrowIcon {
+  transform: translateX(4px); 
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .is-clickable {
+    text-decoration: underline !important;
+    text-underline-offset: 5px;
+  }
+  .is-clickable:active {
+    opacity: 0.6;
+    transform: scale(0.98);
+    transition: 0.1s;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .is-clickable {
+    text-decoration: none; 
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .is-clickable:hover {
+    text-decoration: underline; 
+    text-underline-offset: 5px;
+    transform: translateX(5px);
+  }
 }
