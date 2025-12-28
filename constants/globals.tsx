@@ -6,8 +6,8 @@ export const BRAND = {
     url: "https://tollivalerio.com",
 };
 export const NAV_LINKS = [
-    {name: "Progetti", link: "/#progetti"},
-    {name: "Experience", link: "/#lavoro"},
+    {name: "Progetti", link: "/progetti"},
+    {name: "Experience", link: "/lavoro"},
     {name: "Skills", link: "/about/skills"},
 ] as const;
 
