@@ -1,0 +1,68 @@
+@startuml
+title FleetPulse - architettura applicativa
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundCorner 12
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam ArrowColor #64748B
+skinparam ArrowThickness 1.4
+skinparam component {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  FontColor #0F172A
+}
+skinparam database {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  FontColor #0F172A
+}
+skinparam queue {
+  BackgroundColor #FFF7ED
+  BorderColor #C2410C
+  FontColor #7C2D12
+}
+
+actor "Fleet Operator" as operator
+actor "Operations Engineer" as operations
+
+component "Fleet Dashboard\n\nVeicoli, stato, storico\ne alert" as dashboard
+component "Vehicle Simulator\n\nGenera la telemetria\ne gestisce le connessioni" as simulator
+component "Fleet API\n\nGestione e consultazione\ndella flotta" as api
+component "Telemetry Gateway\n\nValida i frame TCP\ne pubblica gli eventi" as gateway
+queue "Apache Kafka\n\nraw / rejected / dead-letter" as kafka
+component "Telemetry Processor\n\nPersiste i campioni, aggiorna\nlo stato e valuta gli alert" as processor
+database "PostgreSQL\n\nVeicoli, storico\ne alert" as postgres
+database "Redis\n\nStato corrente\ndei veicoli" as redis
+component "Prometheus" as prometheus
+component "Grafana" as grafana
+
+simulator --> api : provisioning REST
+simulator --> gateway : telemetria TCP
+gateway --> kafka : telemetry.raw.v1
+kafka --> processor : consumo asincrono
+processor --> kafka : rejected / dead-letter
+processor --> postgres : campioni
+api --> postgres : gestione veicoli
+prometheus --> gateway : metriche
+prometheus --> processor : metriche
+prometheus --> api : metriche
+grafana --> prometheus
+operations --> grafana
+
+gateway ..> simulator : lettura ACK / NACK
+processor ..> postgres : alert
+processor ..> redis : stato corrente
+api ..> postgres : storico e alert
+api ..> redis : ultima telemetria
+dashboard ..> api : REST / JSON
+operator ..> dashboard
+
+legend bottom
+  |= Collegamento |= Significato |
+  | -> | Già implementato |
+  | ..> | Da completare |
+endlegend
+
+@enduml
