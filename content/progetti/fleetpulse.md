@@ -34,7 +34,7 @@ FleetPulse è diviso in servizi con responsabilità diverse. Il gateway si occup
 
 Nel diagramma è rappresentato il progetto completo. Le frecce continue indicano le parti già implementate, quelle tratteggiate ciò che deve ancora essere completato.
 
-![Architettura e flusso applicativo di FleetPulse](/diagrams/fleetpulse-architecture.png)
+![Architettura e flusso applicativo di FleetPulse](/diagrams/fleetpulse-architecture.svg)
 
 **PostgreSQL** conserva veicoli, storico della telemetria e alert. **Redis** mantiene invece l'ultima rilevazione di ogni veicolo, così da rendere più veloce la consultazione dello stato corrente. Se Redis non è disponibile, Fleet API può ricostruire la risposta partendo dallo storico in PostgreSQL.
 
