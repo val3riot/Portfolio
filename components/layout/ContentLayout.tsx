@@ -1,6 +1,7 @@
 import styles from './ContentLayout.module.css';
 import Footer from './footer';
 import MarkdownContent from './MarkdownContent';
+import SkillTags from '@/components/skills/SkillTags';
 
 interface ContentMetadata {
     backend?: string[];
@@ -8,6 +9,7 @@ interface ContentMetadata {
     frontend?: string[];
     database?: string[];
     tools?: string[];
+    competenze?: string[];
 }
 
 interface ContentLayoutProps {
@@ -25,24 +27,20 @@ export default function ContentLayout({ title, date, contentHTML, metadata }: Co
                 {date && <p className="text-sm text-muted font-mono uppercase">{date}</p>}
             </header>
 
+            {metadata?.competenze && (
+                <section className={styles.projectSkills} aria-labelledby="project-skills-title">
+                    <h2 id="project-skills-title" className={styles.skillsHeading}>Tecnologie principali</h2>
+                    <SkillTags skills={metadata.competenze} />
+                </section>
+            )}
+
             {metadata?.backend && (
-                <section className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                    <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Backend Stack</h4>
-                        <p className="text-sm leading-relaxed">{metadata.backend.join(', ')}</p>
-                    </div>
-                    <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Infrastructure & Networking</h4>
-                        <p className="text-sm leading-relaxed">{metadata.networking?.join(', ')}</p>
-                    </div>
-                    <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Frontend</h4>
-                        <p className="text-sm leading-relaxed">{metadata.frontend?.join(', ')}</p>
-                    </div>
-                    <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Databases & Tools</h4>
-                        <p className="text-sm leading-relaxed">{[...(metadata.database || []), ...(metadata.tools || [])].join(', ')}</p>
-                    </div>
+                <section className={styles.skillsGrid} aria-label="Competenze tecniche">
+                    <SkillGroup title="Backend" skills={metadata.backend} />
+                    <SkillGroup title="Database" skills={metadata.database} />
+                    <SkillGroup title="Strumenti e piattaforme" skills={metadata.tools} />
+                    <SkillGroup title="Infrastruttura e networking" skills={metadata.networking} />
+                    <SkillGroup title="Esperienza frontend" skills={metadata.frontend} />
                 </section>
             )}
 
@@ -56,5 +54,16 @@ export default function ContentLayout({ title, date, contentHTML, metadata }: Co
 
 
 
+    );
+}
+
+function SkillGroup({ title, skills }: { title: string; skills?: string[] }) {
+    if (!skills?.length) return null;
+
+    return (
+        <div className={styles.skillGroup}>
+            <h2 className={styles.skillsHeading}>{title}</h2>
+            <SkillTags skills={skills} />
+        </div>
     );
 }

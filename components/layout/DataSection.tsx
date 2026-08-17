@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../../app/Home.module.css";
+import SkillTags from "@/components/skills/SkillTags";
 
 interface DataItem {
     fields: {
@@ -45,12 +46,8 @@ const DataSection = ({ title, items, basePath }: DataSectionProps) => {
                             )}
 
                             {item.fields.competenze && (
-                                <div className="flex gap-2 mt-2">
-                                    {item.fields.competenze.map((tech) => (
-                                        <span key={tech} className="text-[10px] uppercase tracking-widest text-muted">
-                                            {tech}
-                                        </span>
-                                    ))}
+                                <div className="mt-3">
+                                    <SkillTags skills={item.fields.competenze} compact label={`Competenze ${mainTitle ?? ''}`} />
                                 </div>
                             )}
                         </>

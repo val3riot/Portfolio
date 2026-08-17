@@ -6,6 +6,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getLavori, getProgetti, getSkills, getFormazione } from "@/lib/data";
 import Footer from "@/components/layout/footer";
 import DataSection from "@/components/layout/DataSection";
+import SkillTags from "@/components/skills/SkillTags";
 export default function Home() {
   const progetti = getProgetti();
   const lavori = getLavori();
@@ -48,30 +49,24 @@ export default function Home() {
           </Link>
         </h2>
         {skills[0] && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-4">
             <div>
-              <h4 className="font-medium mb-1 uppercase text-[10px] tracking-wider">
+              <h4 className="font-medium mb-2 uppercase text-[10px] tracking-wider">
                 Backend
               </h4>
-              <p className="text-muted leading-relaxed">
-                {skills[0].fields.backend?.join(", ")}
-              </p>
+              <SkillTags skills={skills[0].fields.backend ?? []} compact label="Competenze backend" />
             </div>
             <div>
-              <h4 className="font-medium mb-1 uppercase text-[10px] tracking-wider">
-                Networking & Lab
+              <h4 className="font-medium mb-2 uppercase text-[10px] tracking-wider">
+                Database
               </h4>
-              <p className="text-muted leading-relaxed">
-                {skills[0].fields.networking?.join(", ")}
-              </p>
+              <SkillTags skills={skills[0].fields.database ?? []} compact label="Competenze database" />
             </div>
-            <div className="md:mt-4">
-              <h4 className="font-medium mb-1 uppercase text-[10px] tracking-wider">
-                Frontend
+            <div className="md:col-span-2">
+              <h4 className="font-medium mb-2 uppercase text-[10px] tracking-wider">
+                Infrastruttura & Networking
               </h4>
-              <p className="text-muted leading-relaxed">
-                {skills[0].fields.frontend?.join(", ")}
-              </p>
+              <SkillTags skills={skills[0].fields.networking ?? []} compact label="Competenze infrastruttura e networking" />
             </div>
           </div>
         )}

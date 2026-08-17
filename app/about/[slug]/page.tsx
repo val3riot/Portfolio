@@ -20,6 +20,7 @@ export default async function AboutPage({ params }: { params: Promise<{ slug: st
             title={data.metadata.title} 
             date={data.metadata.periodo_totale} 
             contentHTML={data.contentHTML} 
+            metadata={data.metadata}
         />
     );
 }

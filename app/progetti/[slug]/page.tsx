@@ -20,6 +20,7 @@ export default async function ProgettiPage({ params }: { params: Promise<{ slug:
             title={data.metadata.title} 
             date={data.metadata.periodo_totale} 
             contentHTML={data.contentHTML} 
+            metadata={data.metadata}
         />
     );
 }
