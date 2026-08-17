@@ -6,4 +6,4 @@ slug: "enrico-fermi"
 date: "2013-09-01"
 ---
 
-Durante il percorso scolastico ho acquisito le basi della programmazione (usando Java), dei sistemi operativi e del networking, consolidando la passione per l'informatica tecnica.
+Durante il percorso scolastico ho acquisito le basi della programmazione, dei sistemi informatici e del networking, sviluppando un interesse duraturo per gli aspetti tecnici del software e dell'infrastruttura.

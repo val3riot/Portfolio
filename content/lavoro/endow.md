@@ -1,48 +1,69 @@
 ---
 title: "Endow"
-date: "2025-12-27"
+date: "2024-09-30"
 highlight: true
-azienda: 'Endow'
-ruolo: 'Backend Developer'
-periodo: 'Set 2021 - set 2024'
-descrizione: 'Sviluppo di interfacce scalabili e gestione del backend.'
-competenze: ['Spring Boot', 'Spring Framework', 'Angular', 'Oracle SQL']
-linkAzienda: 'https://futurae.com'
-logo: '/logos/futurae.png'
-slug: 'endow'
-highlights: [
-    "Ottimizzazione performance del 30%",
-    "Migrazione da PHP a Next.js"
-]
----
-In Endow ho vissuto una crescita completa, partendo come stagista fino a ricoprire il ruolo di Lead Developer, coordinando progetti complessi in ambito Java ed Enterprise.
-
-## Esperienza Professionale
-
-### Lead Developer
-**Novembre 2023 - Settembre 2024 (11 mesi)**
-*Responsabilità: Coordinamento tecnico e sviluppo di architetture Java EE.*
-- Gestione del ciclo di vita delle applicazioni Enterprise.
-- **Stack:** Java EE, Spring Framework, JSP.
-
+azienda: "Endow"
+ruolo: "Java / Backend Developer"
+periodo: "2021 — 2024"
+periodo_totale: "Settembre 2021 — Settembre 2024"
+descrizione: "Sviluppo ed evoluzione di applicazioni Enterprise Java, Spring e Angular."
+competenze:
+  - "Java"
+  - "Java EE"
+  - "Spring Framework"
+  - "Spring Boot"
+  - "Angular"
+  - "Oracle SQL"
+  - "Jenkins"
+  - "Docker"
+slug: "endow"
+highlights:
+  - "Crescita da stage a responsabilità tecniche su applicazioni Enterprise"
+  - "Sviluppo backend Java e integrazione con frontend Angular"
+  - "Manutenzione ed evoluzione di sistemi legacy e moderni"
 ---
 
-### Lead Developer (Angular & Spring Boot)
-**Gennaio 2023 - Settembre 2024 (1 anno 9 mesi)**
-*Responsabilità: Sviluppo Full Stack e migrazione verso architetture moderne.*
-- Integrazione frontend Angular con sistemi Spring Boot.
-- **Stack:** Angular, Spring Boot, Java EE.
+In Endow ho maturato circa tre anni di esperienza professionale su applicazioni **Java Enterprise**, lavorando sia sull'evoluzione di sistemi esistenti sia su componenti più moderni basati su Spring Boot e Angular.
+
+## Esperienza professionale
+
+### Lead Developer — Java EE
+
+**Novembre 2023 — Settembre 2024**
+
+- Coordinamento tecnico e sviluppo su applicazioni Enterprise.
+- Gestione del ciclo di vita applicativo e manutenzione evolutiva.
+- Stack principale: **Java EE, Spring Framework, JSP**.
+
+---
+
+### Lead Developer — Angular & Spring Boot
+
+**Gennaio 2023 — Settembre 2024**
+
+- Sviluppo full stack con backend Spring Boot e frontend Angular.
+- Integrazione tra componenti frontend e servizi backend.
+- Lavoro su API, persistenza Oracle e processi di build/deployment esistenti.
+- Stack principale: **Java, Spring Boot, Angular, Oracle SQL**.
 
 ---
 
 ### Junior Java Developer
-**Giugno 2022 - Gennaio 2023 (8 mesi)**
-- Sviluppo di componenti core in Java per sistemi legacy e nuovi moduli.
-- **Stack:** Java.
+
+**Giugno 2022 — Gennaio 2023**
+
+- Sviluppo e manutenzione di componenti Java per sistemi esistenti e nuovi moduli.
+- Integrazione con servizi e componenti Enterprise.
 
 ---
 
-### Junior Java Developer (Stage)
-**Settembre 2021 - Giugno 2022 (10 mesi)**
-- Formazione intensiva e supporto allo sviluppo backend.
-- **Stack:** Java.
+### Junior Java Developer — Stage
+
+**Settembre 2021 — Giugno 2022**
+
+- Formazione iniziale sullo stack Java e supporto allo sviluppo backend.
+- Consolidamento delle basi di sviluppo software in contesto professionale.
+
+## Tecnologie utilizzate
+
+Nel corso dell'esperienza ho lavorato con **Java EE, Spring Framework, Spring Boot, Angular, JSP, Oracle SQL, SOAP/WSDL, Jenkins e Docker**, acquisendo familiarità con manutenzione di applicazioni legacy, integrazione tra sistemi e sviluppo incrementale in ambienti Enterprise.
