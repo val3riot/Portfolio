@@ -1,11 +1,23 @@
-import { BRAND, SOCIAL_LINKS } from '@/constants/globals';
 import styles from './ContentLayout.module.css';
-import Link from 'next/link';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Footer from './footer';
+import MarkdownContent from './MarkdownContent';
 
-export default function ContentLayout({ title, date, contentHTML, metadata }: any) {
+interface ContentMetadata {
+    backend?: string[];
+    networking?: string[];
+    frontend?: string[];
+    database?: string[];
+    tools?: string[];
+}
+
+interface ContentLayoutProps {
+    title: string;
+    date?: string;
+    contentHTML: string;
+    metadata?: ContentMetadata;
+}
+
+export default function ContentLayout({ title, date, contentHTML, metadata }: ContentLayoutProps) {
     return (
         <article className={styles.article}>
             <header className={styles.header}>
@@ -21,11 +33,11 @@ export default function ContentLayout({ title, date, contentHTML, metadata }: an
                     </div>
                     <div>
                         <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Infrastructure & Networking</h4>
-                        <p className="text-sm leading-relaxed">{metadata.networking.join(', ')}</p>
+                        <p className="text-sm leading-relaxed">{metadata.networking?.join(', ')}</p>
                     </div>
                     <div>
                         <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Frontend</h4>
-                        <p className="text-sm leading-relaxed">{metadata.frontend.join(', ')}</p>
+                        <p className="text-sm leading-relaxed">{metadata.frontend?.join(', ')}</p>
                     </div>
                     <div>
                         <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3">Databases & Tools</h4>
@@ -34,9 +46,9 @@ export default function ContentLayout({ title, date, contentHTML, metadata }: an
                 </section>
             )}
 
-            <div
+            <MarkdownContent
                 className={styles.markdownContent}
-                dangerouslySetInnerHTML={{ __html: contentHTML }}
+                contentHTML={contentHTML}
             />
             <Footer/>
         </article>
