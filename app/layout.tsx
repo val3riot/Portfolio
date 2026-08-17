@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/navbar/navbar";
 import './globals.css';
 import '@/lib/fontawesome';
 import {ThemeProvider} from "@/context/ThemeContext";
+import { BRAND } from "@/constants/globals";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -16,8 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Valerio Tolli | Full Stack Developer",
-    description: "Portfolio e Blog di Valerio Tolli, sviluppatore specializzato in React e Next.js",
+    title: BRAND.name,
+    description: BRAND.description,
+    icons: BRAND.icons,
 };
 
 export default function RootLayout({
