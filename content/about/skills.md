@@ -6,10 +6,17 @@ category: "skills"
 periodo_totale: "Aggiornato ad agosto 2026"
 backend:
   - "Java 21"
+  - "Java 8"
   - "Java EE"
   - "Spring Boot"
   - "Spring Framework"
+  - "Spring MVC"
+  - "Spring Data JPA"
+  - "Spring Security"
+  - "Spring Cloud OpenFeign"
   - "REST APIs"
+  - "SOAP / JAX-WS"
+  - "Apache CXF"
   - "JPA / Hibernate"
   - "Maven"
   - "TCP Socket Programming"
@@ -18,9 +25,13 @@ backend:
   - "Event-Driven Systems"
 frontend:
   - "Angular"
+  - "TypeScript"
+  - "RxJS"
   - "React"
   - "JSP"
+  - "JSTL / Apache Tiles"
   - "jQuery"
+  - "Bootstrap"
   - "JavaScript"
   - "HTML"
   - "CSS"
@@ -37,6 +48,8 @@ tools:
   - "Jenkins"
   - "Docker"
   - "Docker Compose"
+  - "JBoss EAP"
+  - "Swagger"
   - "Testcontainers"
   - "Prometheus"
   - "Grafana"
@@ -59,7 +72,7 @@ Con FleetPulse sono andato oltre il classico sviluppo REST, lavorando direttamen
 
 ## Backend & Software Engineering
 
-Lavoro principalmente con **Java, Spring Boot e Spring Framework**. Sviluppo API REST, gestisco validazione ed errori e uso JPA/Hibernate con database versionati tramite Flyway.
+Lavoro principalmente con **Java, Spring Boot e Spring Framework**. Sviluppo API REST, gestisco validazione ed errori e uso JPA/Hibernate con database versionati tramite Flyway. Nei progetti professionali ho lavorato anche con Spring MVC, Spring Security, Spring Data JPA e OpenFeign per la comunicazione tra microservizi.
 
 In FleetPulse ho suddiviso queste responsabilità tra servizi e librerie dedicate, evitando di mescolare protocollo di rete, logica applicativa e persistenza.
 
@@ -69,7 +82,7 @@ In FleetPulse ho realizzato una pipeline asincrona con **Apache Kafka**. Ho gest
 
 ## Data & Persistence
 
-Ho lavorato con **Oracle SQL** e **PostgreSQL**. In FleetPulse uso PostgreSQL per i dati persistenti e Flyway per gestire le modifiche allo schema. Redis è tra le tecnologie che sto approfondendo.
+Ho lavorato professionalmente con **Oracle SQL e Hibernate/JPA** e uso **PostgreSQL** nei progetti personali. In FleetPulse PostgreSQL conserva i dati persistenti e Flyway gestisce le modifiche allo schema. Redis è tra le tecnologie che sto approfondendo.
 
 ## Infrastructure & Networking
 
@@ -77,6 +90,10 @@ Gestisco un HomeLab basato su **Proxmox VE**, Linux, Docker e Docker Compose. I 
 
 Mi occupo anche di TCP/IP, DNS, VPN, reverse proxy e risoluzione dei problemi sui servizi self-hosted. Uso GitHub Actions per la CI e Testcontainers per eseguire i test d'integrazione con istanze reali di Kafka e PostgreSQL. Per metriche e monitoraggio uso Micrometer, Prometheus e Grafana.
 
+## Integrazioni enterprise
+
+Ho sviluppato e mantenuto integrazioni **SOAP** basate su contratti WSDL/XSD, JAX-WS e Apache CXF. Ho lavorato su applicazioni Maven multi-modulo distribuite come EAR/WAR su JBoss EAP, con build e rilasci supportati da Jenkins e Docker.
+
 ## Esperienza frontend
 
-In passato ho lavorato con **Angular**, React e applicazioni server-side basate su JSP e jQuery. Oggi il mio lavoro e il mio interesse sono concentrati sul backend.
+In ambito professionale ho lavorato su SPA **Angular** con TypeScript, RxJS, Router e Forms, oltre che su applicazioni server-side basate su JSP, JSTL, Apache Tiles, jQuery e Bootstrap. Ho utilizzato React nei progetti personali; oggi il mio interesse principale è il backend.
