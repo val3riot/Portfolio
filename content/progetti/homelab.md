@@ -52,7 +52,7 @@ Per i servizi che devono essere raggiungibili dall'esterno utilizzo **Cloudflare
 
 Le applicazioni vengono eseguite tramite **Docker Compose**. GitHub Actions viene usato per workflow CI e automazione dei repository; la parte di deployment viene progressivamente standardizzata per eliminare script ad hoc specifici per ogni applicazione.
 
-La direzione architetturale è avere un repository operativo privato, `homelab-ops`, come **source of truth** per configurazioni e procedure di deploy, mantenendo separati il codice applicativo e l'orchestrazione dell'infrastruttura.
+Il repository privato `homelab-ops` è la **source of truth** per configurazioni reali, inventario, procedure operative e documentazione interna, mantenendo separati il codice applicativo e l'orchestrazione dell'infrastruttura. Il repository pubblico [val3riot/homelab](https://github.com/val3riot/homelab) raccoglie invece la documentazione tecnica condivisibile e il materiale destinato al portfolio.
 
 ```text
 repository applicativo
@@ -68,12 +68,25 @@ homelab-ops
 docker-main
 ```
 
+La pubblicazione verso il repository pubblico segue un processo unidirezionale e sottoposto a review:
+
+```text
+homelab-ops (private)
+→ export tramite allowlist
+→ validazione anti-leak
+→ branch automatico sul repository pubblico
+→ Pull Request
+→ review manuale
+→ homelab (public)
+```
+
+La validazione automatica impedisce di pubblicare path reali dei server, nomi di policy private, collegamenti a repository privati, token, secret o altre informazioni operative sensibili.
+
 ## Evoluzione in corso
 
 Le prossime evoluzioni sono trattate come progetto separato dall'infrastruttura già operativa:
 
 - standardizzazione dei deployment senza migrare inutilmente i workload esistenti;
-- repository `homelab-ops` come punto centrale per stack e procedure;
 - control plane dedicato per stato applicazioni, deploy, restart e consultazione log;
 - nodo di backup basato su Lenovo ThinkCentre, pensato per accendersi durante una finestra notturna, eseguire i backup e spegnersi al termine;
 - revisione periodica delle risorse della VM Docker e della strategia di backup Proxmox.
