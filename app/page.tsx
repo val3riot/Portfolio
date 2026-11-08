@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { BRAND, SOCIAL_LINKS } from "@/constants/globals";
+import { BRAND } from "@/constants/globals";
 import styles from "./Home.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import SocialLinks from "@/components/layout/SocialLinks";
 import { getLavori, getProgetti, getSkills, getFormazione } from "@/lib/data";
 import Footer from "@/components/layout/footer";
 import DataSection from "@/components/layout/DataSection";
 import SkillTags from "@/components/skills/SkillTags";
+import { SKILL_CATEGORIES } from "@/constants/skills";
 export default function Home() {
   const progetti = getProgetti();
   const lavori = getLavori();
-  const skills = getSkills();
+  const skills = getSkills().find((item) => item.fields.slug === "skills")?.fields;
   const formazione = getFormazione();
   return (
     <main className={styles.container}>
@@ -18,22 +18,7 @@ export default function Home() {
         <h1 className="text-2xl font-medium tracking-tight">{BRAND.name}</h1>
         <p className="text-muted-foreground mt-2">{BRAND.description}</p>
         <div className={styles.socialWrapper}>
-          <Link
-            href={SOCIAL_LINKS.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialIcon}
-          >
-            <FontAwesomeIcon icon={faGithub} />
-          </Link>
-          <Link
-            href={SOCIAL_LINKS.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialIcon}
-          >
-            <FontAwesomeIcon icon={faLinkedin} />
-          </Link>
+          <SocialLinks className={styles.socialIcon} />
         </div>
       </header>
       <DataSection title="Esperienze" items={lavori} basePath="lavoro" />
@@ -48,26 +33,14 @@ export default function Home() {
             </span>
           </Link>
         </h2>
-        {skills[0] && (
+        {skills && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-4">
-            <div>
-              <h4 className="font-medium mb-2 uppercase text-[10px] tracking-wider">
-                Backend
-              </h4>
-              <SkillTags skills={skills[0].fields.backend ?? []} compact label="Competenze backend" />
-            </div>
-            <div>
-              <h4 className="font-medium mb-2 uppercase text-[10px] tracking-wider">
-                Database
-              </h4>
-              <SkillTags skills={skills[0].fields.database ?? []} compact label="Competenze database" />
-            </div>
-            <div className="md:col-span-2">
-              <h4 className="font-medium mb-2 uppercase text-[10px] tracking-wider">
-                Infrastruttura & Networking
-              </h4>
-              <SkillTags skills={skills[0].fields.networking ?? []} compact label="Competenze infrastruttura e networking" />
-            </div>
+            {SKILL_CATEGORIES.filter(({ key }) => ['backend', 'frontend', 'database'].includes(key)).map(({ key, title }) => (
+              <div key={key} className={key === 'database' ? 'md:col-span-2' : undefined}>
+                <h3 className="font-medium mb-2 uppercase text-[10px] tracking-wider">{title}</h3>
+                <SkillTags skills={skills[key] ?? []} compact label={title} />
+              </div>
+            ))}
           </div>
         )}
       </section>

@@ -1,23 +1,22 @@
-'use client';
+"use client";
 
-import {useTheme} from "@/context/ThemeContext";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSun, faMoon} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 export default function ThemeToggle() {
-    const {theme, toggleTheme} = useTheme();
-    if (!theme) return <div className="w-8 h-8"/>;
+    function toggleTheme() {
+        const dark = document.documentElement.classList.toggle('dark');
+        try {
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        } catch {
+            // Changing theme remains available when storage is blocked.
+        }
+    }
+
     return (
-        <button
-            onClick={toggleTheme}
-            className="p-2 opacity-60 hover:opacity-100 transition-opacity duration-200"
-            aria-label="Cambia tema"
-        >
-            {theme === 'light' ? (
-                <FontAwesomeIcon icon={faMoon} className="text-lg"/>
-            ) : (
-                <FontAwesomeIcon icon={faSun} className="text-lg"/>
-            )}
+        <button type="button" onClick={toggleTheme} className="theme-toggle p-2 opacity-60 hover:opacity-100 transition-opacity duration-200" aria-label="Cambia tema">
+            <FontAwesomeIcon icon={faMoon} className="theme-light-icon text-lg" />
+            <FontAwesomeIcon icon={faSun} className="theme-dark-icon text-lg" />
         </button>
     );
 }

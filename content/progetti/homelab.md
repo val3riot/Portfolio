@@ -1,98 +1,51 @@
 ---
 title: "HomeLab & Operations"
-date: "2026-08-12"
+date: "2026-11-08"
 highlight: true
 periodo: "Nov 2025 — in corso"
 periodo_totale: "Novembre 2025 — in corso"
-descrizione: "Laboratorio personale per virtualizzazione, container, networking, CI e gestione operativa di servizi self-hosted."
+descrizione: "Infrastruttura personale per servizi self-hosted, accesso remoto, automazione e backup."
 competenze:
-  - "Proxmox VE"
-  - "Linux"
-  - "Docker"
+  - "Proxmox VE / Linux"
   - "Docker Compose"
-  - "GitHub Actions"
-  - "Cloudflare Tunnel"
-  - "Networking"
+  - "Nginx / TLS"
+  - "Tailscale"
+  - "Cloudflare Access / Tunnel"
+  - "Ansible"
 slug: "homelab"
 highlights:
-  - "Proxmox VE con VM Linux dedicata ai workload Docker"
-  - "Servizi infrastrutturali e monitoring separati su Raspberry Pi"
-  - "Accesso remoto e pubblicazione selettiva dei servizi"
-  - "Evoluzione verso deployment e backup standardizzati"
+  - "VM applicativa e laboratorio separati su Proxmox"
+  - "DNS, proxy e accesso remoto su nodo di rete dedicato"
+  - "Configurazioni versionate e pubblicazione controllata della documentazione"
+  - "Backup applicativi e VM attivi, con copertura ancora parziale"
 ---
 
-Il mio HomeLab è un ambiente di studio e sperimentazione usato per approfondire **Linux, virtualizzazione, containerizzazione, networking e operations** attraverso servizi realmente utilizzati nella rete domestica.
+Ambiente personale per gestire **servizi self-hosted** e approfondire virtualizzazione, networking e operatività su Linux.
 
-## Architettura attuale
+## Infrastruttura
 
-L'infrastruttura è organizzata attorno a **Proxmox VE** come hypervisor principale. I workload applicativi containerizzati sono concentrati in una VM Linux dedicata, `docker-main`, invece di creare una VM o un container Proxmox per ogni singola applicazione.
+Proxmox VE ospita una VM Debian per i workload Docker e una VM laboratorio distinta. Le applicazioni usano progetti Compose con reti e dati separati; l'inventario attuale non prevede workload LXC.
 
-```text
-Proxmox VE
-└── docker-main
-    └── applicazioni e servizi Docker / Docker Compose
+La VM applicativa ospita strumenti come Gitea con PostgreSQL, Portainer e Open WebUI. L'inferenza AI dipende da una workstation GPU separata. Il laboratorio contiene K3s e Jenkins, viene avviato manualmente e resta spento quando non utilizzato; le pipeline di esercizio sono ancora da configurare.
 
-Raspberry Pi
-├── servizi DNS e di rete
-├── Unbound
-├── monitoring con Uptime Kuma
-├── Cloudflare Tunnel
-└── utility e servizi infrastrutturali leggeri
-```
+Un Raspberry Pi separa i servizi infrastrutturali dai workload applicativi: DNS, reverse proxy, accesso remoto, condivisione file e monitoraggio. Questa concentrazione è anche una dipendenza operativa: un suo guasto interrompe l'accesso a più servizi.
 
-Questa separazione mantiene **compute applicativo** e **servizi infrastrutturali** distinti, lasciando a Proxmox il ruolo di livello di virtualizzazione e alla VM Docker quello di runtime principale per le applicazioni.
+## Rete e accesso
 
-## Networking & accesso remoto
+Nginx gestisce l'ingresso ai servizi locali con HTTPS e CA privata. Tailscale consente l'accesso remoto alla rete autorizzata con split DNS; Cloudflare Access e Tunnel pubblicano soltanto servizi selezionati, senza port forwarding sul router. Il password manager e la condivisione file restano accessibili da LAN o VPN.
 
-L'HomeLab viene utilizzato per sperimentare configurazione e troubleshooting di **TCP/IP, DNS, VPN, reverse proxy e accesso remoto**.
+## Automazione e gestione
 
-Per i servizi che devono essere raggiungibili dall'esterno utilizzo **Cloudflare Tunnel**, evitando di esporre direttamente porte amministrative sulla rete pubblica. Il monitoraggio dei servizi è centralizzato tramite Uptime Kuma.
+Il repository privato delle operations conserva inventario, configurazioni e procedure. Ansible gestisce il reverse proxy con verifica delle differenze prima dell'applicazione e controlli successivi di convergenza.
 
-## Container & deployment
+Una pipeline esporta la documentazione condivisibile tramite allowlist e controlli anti-leak, aprendo una pull request per revisione manuale. La precedente pipeline applicativa è stata dismessa: non rappresenta un deployment automatico attualmente operativo.
 
-Le applicazioni vengono eseguite tramite **Docker Compose**. GitHub Actions viene usato per workflow CI e automazione dei repository; la parte di deployment viene progressivamente standardizzata per eliminare script ad hoc specifici per ogni applicazione.
+Uptime Kuma controlla la disponibilità; log nativi, stato dei servizi e health check dei container supportano la diagnosi. Il monitoraggio centralizzato con Prometheus e Grafana resta da implementare nell'HomeLab.
 
-Il repository privato `homelab-ops` è la **source of truth** per configurazioni reali, inventario, procedure operative e documentazione interna, mantenendo separati il codice applicativo e l'orchestrazione dell'infrastruttura. Il repository pubblico [val3riot/homelab](https://github.com/val3riot/homelab) raccoglie invece la documentazione tecnica condivisibile e il materiale destinato al portfolio.
+## Backup e limiti attuali
 
-```text
-repository applicativo
-        │
-        ├── CI / build
-        ▼
-artefatto o immagine
-        │
-        ▼
-homelab-ops
-        │
-        ▼
-docker-main
-```
+Un disco separato ospita backup giornalieri del password manager e settimanali della VM applicativa. I job verificano il filesystem di destinazione prima di scrivere; le copie applicative includono checksum e riavvio controllato del servizio.
 
-La pubblicazione verso il repository pubblico segue un processo unidirezionale e sottoposto a review:
+Sono documentate verifiche di integrità dell'archivio VM e un ripristino isolato del database con avvio del password manager. Il ripristino completo della VM non è ancora stato provato. Condivisione file, copertura completa delle configurazioni e copie off-site restano da completare; Proxmox Backup Server su un nodo separato è pianificato.
 
-```text
-homelab-ops (private)
-→ export tramite allowlist
-→ validazione anti-leak
-→ branch automatico sul repository pubblico
-→ Pull Request
-→ review manuale
-→ homelab (public)
-```
-
-La validazione automatica impedisce di pubblicare path reali dei server, nomi di policy private, collegamenti a repository privati, token, secret o altre informazioni operative sensibili.
-
-## Evoluzione in corso
-
-Le prossime evoluzioni sono trattate come progetto separato dall'infrastruttura già operativa:
-
-- standardizzazione dei deployment senza migrare inutilmente i workload esistenti;
-- control plane dedicato per stato applicazioni, deploy, restart e consultazione log;
-- nodo di backup basato su Lenovo ThinkCentre, pensato per accendersi durante una finestra notturna, eseguire i backup e spegnersi al termine;
-- revisione periodica delle risorse della VM Docker e della strategia di backup Proxmox.
-
-Queste parti sono **in progettazione o implementazione progressiva** e non vengono considerate funzionalità già completate.
-
-## Obiettivo tecnico
-
-Il valore del progetto non è soltanto il self-hosting: l'HomeLab viene usato per studiare problemi tipici delle operations reali, come separazione delle responsabilità, health check, deployment ripetibili, accesso remoto, gestione dei failure, backup e osservabilità dei servizi.
+[Documentazione pubblica HomeLab](https://github.com/val3riot/homelab)

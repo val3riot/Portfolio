@@ -3,7 +3,6 @@ import {Geist, Geist_Mono} from "next/font/google";
 import Navbar from "@/components/layout/navbar/navbar";
 import './globals.css';
 import '@/lib/fontawesome';
-import {ThemeProvider} from "@/context/ThemeContext";
 import { BRAND } from "@/constants/globals";
 
 const geistSans = Geist({
@@ -28,14 +27,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="it" suppressHydrationWarning>
         <head>
             <script dangerouslySetInnerHTML={{
                 __html: `
             (function() {
-              const theme = localStorage.getItem('theme') || 
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-              if (theme === 'dark') document.documentElement.classList.add('dark');
+              let theme;
+              try { theme = localStorage.getItem('theme'); } catch {}
+              const dark = theme === 'dark' ||
+                (theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+              document.documentElement.classList.toggle('dark', dark);
             })()
           `
             }}/>
@@ -43,10 +44,8 @@ export default function RootLayout({
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        <ThemeProvider>
             <Navbar/>
             {children}
-        </ThemeProvider>
         </body>
         </html>
     );

@@ -1,26 +1,16 @@
-import { getContentData } from "@/lib/content";
-import ContentLayout from "@/components/layout/ContentLayout";
-import { getLavori } from "@/lib/data"; 
+import { getContentItems } from '@/lib/content';
+import ContentPage, { getContentMetadata, type ContentPageProps } from '@/components/layout/ContentPage';
 
-export async function generateStaticParams() {
-    const lavori = getLavori();
-    
-    return lavori.map((job) => ({
-        slug: job.fields.slug,
-    }));
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+    return getContentItems('lavoro').map((item) => ({ slug: item.fields.slug }));
 }
-export default async function ExperiencePage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
-    const data = await getContentData('lavoro', slug);
 
-    if (!data) return <div>404 - Pagina non trovata</div>;
+export function generateMetadata(props: ContentPageProps) {
+    return getContentMetadata('lavoro', props);
+}
 
-    return (
-        <ContentLayout 
-            title={data.metadata.title} 
-            date={data.metadata.periodo_totale} 
-            contentHTML={data.contentHTML} 
-            metadata={data.metadata}
-        />
-    );
+export default function Page({ params }: ContentPageProps) {
+    return <ContentPage type="lavoro" params={params} />;
 }

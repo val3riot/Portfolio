@@ -3,14 +3,8 @@ import Footer from './footer';
 import MarkdownContent from './MarkdownContent';
 import SkillTags from '@/components/skills/SkillTags';
 
-interface ContentMetadata {
-    backend?: string[];
-    networking?: string[];
-    frontend?: string[];
-    database?: string[];
-    tools?: string[];
-    competenze?: string[];
-}
+import { SKILL_CATEGORIES } from '@/constants/skills';
+import type { ContentMetadata } from '@/lib/content';
 
 interface ContentLayoutProps {
     title: string;
@@ -36,11 +30,9 @@ export default function ContentLayout({ title, date, contentHTML, metadata }: Co
 
             {metadata?.backend && (
                 <section className={styles.skillsGrid} aria-label="Competenze tecniche">
-                    <SkillGroup title="Backend" skills={metadata.backend} />
-                    <SkillGroup title="Database" skills={metadata.database} />
-                    <SkillGroup title="Strumenti e piattaforme" skills={metadata.tools} />
-                    <SkillGroup title="Infrastruttura e networking" skills={metadata.networking} />
-                    <SkillGroup title="Esperienza frontend" skills={metadata.frontend} />
+                    {SKILL_CATEGORIES.map(({ key, title }) => (
+                        <SkillGroup key={key} title={title} skills={metadata[key]} />
+                    ))}
                 </section>
             )}
 
@@ -50,10 +42,6 @@ export default function ContentLayout({ title, date, contentHTML, metadata }: Co
             />
             <Footer/>
         </article>
-
-
-
-
     );
 }
 

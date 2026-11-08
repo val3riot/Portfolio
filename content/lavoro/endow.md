@@ -3,79 +3,47 @@ title: "Endow"
 date: "2024-09-30"
 highlight: true
 azienda: "Endow"
-ruolo: "Java / Backend Developer"
+ruolo: "Java Backend Developer"
 periodo: "2021 — 2024"
 periodo_totale: "Settembre 2021 — Settembre 2024"
-descrizione: "Sviluppo ed evoluzione di applicazioni enterprise e microservizi per progetti INAIL e NoiPA."
+descrizione: "Sviluppo e manutenzione di applicazioni enterprise per la Pubblica Amministrazione, dallo stage al ruolo di Lead Java Developer."
 competenze:
-  - "Java"
-  - "Java EE"
-  - "Spring MVC"
-  - "Spring Framework"
-  - "Spring Boot"
-  - "Spring Data JPA"
-  - "Spring Security"
-  - "OpenFeign"
+  - "Java / Java EE"
+  - "Spring Boot / MVC"
   - "Angular"
-  - "TypeScript"
-  - "Oracle SQL"
-  - "SOAP / JAX-WS"
-  - "Hibernate"
-  - "Maven"
-  - "JBoss EAP"
-  - "Jenkins"
-  - "Docker"
+  - "Oracle / JPA / Hibernate"
+  - "REST / SOAP"
+  - "Maven / Jenkins"
+  - "WebLogic / JBoss EAP"
 slug: "endow"
 highlights:
-  - "Evoluzione di applicazioni Java EE per INAIL"
-  - "Microservizi Spring Boot e frontend Angular per NoiPA"
-  - "Integrazioni SOAP, persistenza Oracle e deployment enterprise"
+  - "Progressione da Junior Java Developer a Lead Java Developer"
+  - "Sviluppo backend Java EE e Spring Boot, frontend Angular e Spring MVC/JSP"
+  - "Integrazioni REST/SOAP e persistenza Oracle con JPA/Hibernate"
 ---
 
-In Endow ho maturato circa tre anni di esperienza professionale nello sviluppo e nella manutenzione di applicazioni per la Pubblica Amministrazione. Ho lavorato su sistemi **Java Enterprise** distribuiti come moduli EAR/WAR e su un'architettura a **microservizi Spring Boot** con frontend Angular, seguendo integrazioni, persistenza, build e rilascio.
+**Endow · Roma, Italia**
 
-## Esperienza professionale
-
-### Lead Developer — Java EE
+## Lead Java Developer – part-time
 
 **Novembre 2023 — Settembre 2024**
 
-- Evoluzione dell'applicazione INAIL **Organismo Notificato**, articolata in moduli backend, frontend, gateway e workflow; analisi tecnica di un ulteriore progetto con interventi correttivi circoscritti.
-- Sviluppo e manutenzione di componenti Java, interfacce web server-side e integrazioni con servizi aziendali.
-- Gestione di applicazioni Maven multi-modulo distribuite come **EAR e WAR** su application server JBoss EAP.
-- Tecnologie: **Java 7/8, Java EE, Spring Framework e Spring MVC, JSP, JSTL, Apache Tiles, Hibernate/JPA, Maven, JBoss EAP**.
-- Integrazioni: servizi **SOAP**, contratti **WSDL/XSD**, **JAX-WS** e Apache CXF; utilizzo di Quartz per attività schedulate e Drools nei moduli contenenti regole applicative.
+Manutenzione evolutiva e sviluppo di nuove funzionalità su un'applicazione enterprise Java EE per la Pubblica Amministrazione, con frontend server-side basato su Spring MVC/JSP e funzionalità dinamiche realizzate con JavaScript e jQuery. Integrazioni SOAP, persistenza con JPA/Hibernate e Oracle, build Maven e deployment su WebLogic e JBoss EAP.
 
----
+## Lead Java Developer
 
-### Lead Developer — Angular & Spring Boot
+**Gennaio 2023 — Novembre 2023**
 
-**Gennaio 2023 — Settembre 2024**
+Sviluppo e manutenzione evolutiva di un'applicazione enterprise per la Pubblica Amministrazione, con particolare attenzione al backend Java EE e Spring Boot. Implementazione di nuove funzionalità e servizi SOAP basati su contratti WSDL/XSD, gestione della logica applicativa e della persistenza tramite JPA/Hibernate e Oracle. Interventi di manutenzione e integrazione con i sistemi applicativi esistenti.
 
-- Sviluppo full stack sulla piattaforma NoiPA per la gestione di fondi, contabilità, anagrafiche e processi di importazione.
-- Manutenzione ed evoluzione di più microservizi REST in **Java 8 e Spring Boot 2**, con persistenza Oracle tramite **Spring Data JPA/Hibernate**.
-- Comunicazione tra servizi tramite **Spring Cloud OpenFeign**, sicurezza con **Spring Security** e documentazione delle API con Swagger.
-- Sviluppo dei frontend SPA con **Angular 7, TypeScript, RxJS, Angular Router e Forms**, integrati con Bootstrap e componenti jQuery preesistenti.
-- Build con **Maven**, gestione dei rilasci tramite script Jenkins e supporto ai processi di deployment.
-
----
-
-### Junior Java Developer
+## Junior Java Developer
 
 **Giugno 2022 — Gennaio 2023**
 
-- Sviluppo e manutenzione di componenti Java per applicazioni enterprise, intervenendo su livelli web, business e persistenza.
-- Lavoro con **Java EE, Spring MVC, JSP, Hibernate, Oracle SQL e Maven**, oltre alle integrazioni SOAP basate su WSDL.
+Sviluppo e manutenzione di applicazioni enterprise con Java, Spring Boot e Angular, realizzazione di API REST e gestione della persistenza tramite JPA/Hibernate e Oracle. Utilizzo di Maven per la gestione delle dipendenze e delle build, Jenkins per il deployment e SonarQube per l'analisi della qualità del codice, in un contesto Agile/Scrum.
 
----
-
-### Junior Java Developer — Stage
+## Junior Java Developer – Stage
 
 **Settembre 2021 — Giugno 2022**
 
-- Formazione iniziale e affiancamento sullo sviluppo backend Java in contesto enterprise.
-- Consolidamento di **Java, SQL, Git e Maven** attraverso correzioni, manutenzione e sviluppo incrementale.
-
-## Tecnologie utilizzate
-
-Il lavoro sui progetti conservati copre **Java 7/8, Java EE, Spring Framework, Spring MVC, Spring Boot 2, Spring Data JPA, Spring Security, Hibernate, Angular 7, TypeScript, RxJS, JSP, JSTL, Apache Tiles, Oracle SQL, REST, SOAP, WSDL/XSD, JAX-WS, Apache CXF, Swagger, Maven, JBoss EAP, Jenkins e Docker**. Questa esperienza mi ha permesso di lavorare sia su sistemi enterprise legacy sia su applicazioni a microservizi, mantenendo integrazioni e procedure di rilascio già in produzione.
+Attività di sviluppo software in team Agile/Scrum, con utilizzo di Java, SQL, Git e Maven e affiancamento nelle attività di sviluppo e manutenzione applicativa.

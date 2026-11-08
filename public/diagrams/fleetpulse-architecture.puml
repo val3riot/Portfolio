@@ -52,10 +52,10 @@ grafana --> prometheus
 operations --> grafana
 
 gateway ..> simulator : lettura ACK / NACK
-processor ..> postgres : alert
-processor ..> redis : stato corrente
-api ..> postgres : storico e alert
-api ..> redis : ultima telemetria
+processor --> postgres : alert
+processor --> redis : stato corrente
+api --> postgres : storico e alert
+api --> redis : ultima telemetria
 dashboard ..> api : REST / JSON
 operator ..> dashboard
 

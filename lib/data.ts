@@ -1,28 +1,6 @@
-import FusionCollection from "fusionable/FusionCollection";
+import { getContentItems } from './content';
 
-export function getProgetti() {
-    return new FusionCollection()
-        .loadFromDir('content/progetti')
-        .orderBy('date', 'desc')
-        .getItemsArray();
-}
-
-export function getLavori() {
-    return new FusionCollection()
-        .loadFromDir('content/lavoro')
-        .orderBy('date', 'desc')
-        .getItemsArray();
-}
-
-export function getSkills() {
-    return new FusionCollection()
-        .loadFromDir('content/about')
-        .orderBy('date', 'desc')
-        .getItemsArray();
-}
-export function getFormazione() {
-    const collection = new FusionCollection()
-        .loadFromDir('content/formazione')
-        .orderBy('date', 'desc');
-    return collection.getItemsArray();
-}
+export const getProgetti = () => getContentItems('progetti');
+export const getLavori = () => getContentItems('lavoro');
+export const getSkills = () => getContentItems('about');
+export const getFormazione = () => getContentItems('formazione');

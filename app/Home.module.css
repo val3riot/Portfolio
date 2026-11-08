@@ -4,12 +4,6 @@
   padding: 20px 24px;
 }
 
-.section {
-  margin-top: 60px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-
 .sectionTitle {
   font-size: 0.7rem;
   font-weight: 600;
@@ -17,18 +11,6 @@
   letter-spacing: 0.15em;
   color: var(--muted);
   margin-bottom: 30px;
-}
-
-.experienceItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 12px 0;
-  border-bottom: 0.5px solid var(--border);
-}
-
-.experienceItem:last-child {
-  border-bottom: none;
 }
 
 .socialWrapper {

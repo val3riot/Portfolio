@@ -25,3 +25,12 @@ ul { list-style: none; padding: 0; margin: 0; }
 .section {
     transition: border-color 0.2s ease-in-out;
 }
+
+.theme-toggle .theme-dark-icon,
+:root.dark .theme-toggle .theme-light-icon {
+    display: none;
+}
+
+:root.dark .theme-toggle .theme-dark-icon {
+    display: inline-block;
+}

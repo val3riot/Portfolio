@@ -40,7 +40,7 @@
     transform: translateY(-5px);
 }
 
-.logo h1 {
+.logo a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +50,7 @@
     transition: 1s ease-in-out;
 }
 
-.logo h1:hover {
+.logo a:hover {
     transform: rotate(360deg) scale(1);
 }
 

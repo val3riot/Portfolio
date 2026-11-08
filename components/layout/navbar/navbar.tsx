@@ -9,10 +9,10 @@ const Navbar = () => {
         <header>
             <nav className={styles.navbar}>
                 <div className={styles.logo}>
-                    <Link href={'/'}><h1>{BRAND.logo}</h1></Link>
+                    <Link href="/" aria-label="Homepage">{BRAND.logo}</Link>
 
                 </div>
-                {<MobileMenu/>}
+                <MobileMenu/>
                 <ul className={styles["nav-list"]}>
                     {
                         NAV_LINKS.map((el) => (

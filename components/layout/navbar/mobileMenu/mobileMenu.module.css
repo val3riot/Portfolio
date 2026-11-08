@@ -23,6 +23,7 @@
     align-items: center;
     padding: 1.2rem 1.5rem;
     gap: 1.5rem;
+    z-index: 1001;
     pointer-events: auto;
     position: absolute; 
     right: 0;
@@ -59,17 +60,17 @@
 }
 
 /* GESTIONE TEMA */
-.header.light .overlay {
+.overlay {
     background-color: rgba(255, 255, 255, 0.8);
 }
-.header.light .item a {
+.item a {
     color: #111111;
 }
 
-.header.dark .overlay {
+:global(html.dark) .overlay {
     background-color: rgba(10, 10, 10, 0.85);
 }
-.header.dark .item a {
+:global(html.dark) .item a {
     color: #ffffff;
 }
 
